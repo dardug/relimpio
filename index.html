@@ -13,12 +13,11 @@
 }
 
 html, body {
-  width: 90%;
+  width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  overflow-y: auto;
 }
 
 body {
@@ -35,23 +34,24 @@ header {
   background-color: #4CAF50;
   color: white;
   text-align: center;
-  padding: 1em;
+  padding: 0.8em;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   z-index: 1000;
 }
 
 h1 {
-  font-size: 2.2em;
+  font-size: 1.6em;
   margin-bottom: 0;
   font-weight: 700;
 }
 
 header p {
-  font-size: 1.1em;
-  margin-top: 0.5em;
+  font-size: 0.9em;
+  margin-top: 0.3em;
   font-weight: 500;
 }
 
@@ -63,11 +63,12 @@ header p {
   padding: 1em;
   background-color: white;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  margin-top: 80px; /* Adjusted for fixed header */
 }
 
 h2 {
   color: #4CAF50;
-  font-size: 1.6em;
+  font-size: 1.4em;
   margin-bottom: 0.8em;
   font-weight: 500;
 }
@@ -78,28 +79,26 @@ h2 {
   border-spacing: 0 10px;
 }
 
-.cart-table th {
+.cart-table th, .cart-table td {
   background-color: #4CAF50;
   color: white;
-  padding: 12px 8px;
-  text-align: left;
+  padding: 10px 5px;
+  text-align: center;
   font-weight: 500;
-  position: sticky;
-  top: 70px;
-  z-index: 10;
+  font-size: 0.9em;
 }
 
 .cart-table td {
   background-color: #f9f9f9;
-  padding: 12px 8px;
+  color: #333;
 }
 
 .cart-table tr {
   transition: all 0.3s ease;
 }
 
-.cart-table tr:hover {
-  background-color: #f0f0f0;
+.cart-table tr:active {
+  background-color: #e8e8e8;
 }
 
 .quantity-selector {
@@ -112,9 +111,9 @@ h2 {
   background-color: #4CAF50;
   color: white;
   border: none;
-  width: 36px;
-  height: 36px;
-  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
   cursor: pointer;
   border-radius: 50%;
   transition: background-color 0.3s ease;
@@ -123,15 +122,15 @@ h2 {
   justify-content: center;
 }
 
-.quantity-selector button:hover {
+.quantity-selector button:active {
   background-color: #45a049;
 }
 
 .quantity-selector input {
-  width: 40px;
+  width: 30px;
   text-align: center;
-  font-size: 16px;
-  margin: 0 10px;
+  font-size: 14px;
+  margin: 0 5px;
   border: 2px solid #4CAF50;
   border-radius: 4px;
   -webkit-appearance: none;
@@ -148,33 +147,28 @@ h2 {
   background-color: #ff4d4d;
   color: white;
   border: none;
-  padding: 8px 15px;
+  padding: 6px 10px;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s ease;
-  font-size: 14px;
+  font-size: 0.8em;
 }
 
-.remove-btn:hover {
+.remove-btn:active {
   background-color: #ff3333;
 }
 
 .cart-summary {
   margin-top: 1.5em;
   text-align: right;
-  font-size: 1.1em;
-  position: sticky;
-  bottom: 0;
-  background-color: white;
-  padding: 1em;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  font-size: 1em;
 }
 
 .btn {
   display: inline-block;
   background-color: #4CAF50;
   color: white;
-  padding: 12px 24px;
+  padding: 10px 20px;
   text-decoration: none;
   border-radius: 30px;
   font-weight: 500;
@@ -183,16 +177,19 @@ h2 {
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
+  width: 100%;
+  text-align: center;
 }
 
-.btn:hover {
+.btn:active {
   background-color: #45a049;
+  transform: translateY(2px);
 }
 
 .delivery-option {
   margin-top: 1.5em;
   background-color: #f9f9f9;
-  padding: 1.2em;
+  padding: 1em;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
@@ -200,7 +197,7 @@ h2 {
 .delivery-option label {
   display: block;
   margin-bottom: 10px;
-  font-size: 1em;
+  font-size: 0.9em;
 }
 
 .delivery-details {
@@ -213,7 +210,7 @@ h2 {
   margin-bottom: 10px;
   border: 2px solid #4CAF50;
   border-radius: 4px;
-  font-size: 1em;
+  font-size: 0.9em;
   -webkit-appearance: none;
 }
 
@@ -226,18 +223,29 @@ h2 {
   color: white;
   border: none;
   padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 30px;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-.gps-btn:hover {
+.gps-btn:active {
   background-color: #45a049;
+}
+
+.gps-btn .emoji {
+  margin-right: 8px;
+}
+
+#gps-status {
+  display: block;
+  margin-top: 10px;
+  font-style: italic;
+  font-size: 0.8em;
 }
 
 footer {
@@ -246,68 +254,22 @@ footer {
   text-align: center;
   padding: 1em;
   width: 100%;
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0.8em;
-  }
-  
-  .cart-table {
-    font-size: 0.9em;
-  }
-
-  .cart-table th, .cart-table td {
-    padding: 8px 4px;
-  }
-  
-  .btn {
-    padding: 10px 20px;
-    font-size: 0.9em;
-  }
-
-  .quantity-selector button {
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
-  }
-
-  .quantity-selector input {
-    width: 30px;
-    font-size: 14px;
-  }
-
-  .remove-btn {
-    padding: 6px 12px;
-    font-size: 0.8em;
-  }
-
-  h1 {
-    font-size: 1.8em;
-  }
-
-  header p {
-    font-size: 0.9em;
-  }
-
-  h2 {
-    font-size: 1.4em;
-  }
-}
-
+/* Mobile-specific styles */
 @media (max-width: 480px) {
   .cart-table {
     font-size: 0.8em;
   }
 
   .cart-table th, .cart-table td {
-    padding: 6px 2px;
+    padding: 8px 2px;
   }
 
-  .btn {
-    padding: 8px 16px;
-    font-size: 0.8em;
+  .btn, .gps-btn {
+    padding: 12px 20px;
+    font-size: 1em;
   }
 
   .quantity-selector button {
@@ -322,12 +284,12 @@ footer {
   }
 
   .remove-btn {
-    padding: 5px 10px;
+    padding: 5px 8px;
     font-size: 0.7em;
   }
 
   h1 {
-    font-size: 1.6em;
+    font-size: 1.4em;
   }
 
   header p {
@@ -337,7 +299,30 @@ footer {
   h2 {
     font-size: 1.2em;
   }
+
+  .delivery-option label {
+    font-size: 0.9em;
+  }
+
+  .delivery-details input {
+    font-size: 0.9em;
+  }
 }
+
+/* Add styles for better touch interaction */
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 </style>
 </head>
 <body>
@@ -531,7 +516,9 @@ footer {
       <input type="text" id="nombre" placeholder="Tu nombre completo">
       <input type="text" id="direccion" placeholder="Dirección de entrega">
       <div class="gps-option">
-        <button id="gps-btn" class="gps-btn" onclick="getGPSLocation()">📍 ¿Queres enviar tu ubicación GPS?Tenes que estar en un domicilio.</button>
+        <button id="gps-btn" class="gps-btn" onclick="getGPSLocation()">
+          <span class="emoji">📍</span> Enviar mi ubicación GPS
+        </button>
         <span id="gps-status"></span>
       </div>
     </div>
@@ -662,6 +649,16 @@ function enviarPedidoWhatsApp() {
 
 // Inicializar el estado de los detalles de entrega
 toggleDeliveryDetails();
+
+// Prevenir el zoom en dispositivos móviles
+document.addEventListener('touchmove', function (event) {
+  if (event.scale !== 1) { event.preventDefault(); }
+}, { passive: false });
+
+// Mejorar la experiencia táctil
+document.addEventListener('gesturestart', function (e) {
+  e.preventDefault();
+});
 
 // Service Worker para PWA
 if ('serviceWorker' in navigator) {
