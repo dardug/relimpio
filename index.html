@@ -26,7 +26,7 @@ body {
   color: #333;
   display: flex;
   flex-direction: column;
-  padding-top: 112.5px; /* Increased by 50% from 75px */
+  padding-top: 112.5px;
   font-size: 20.8px;
 }
 
@@ -88,6 +88,23 @@ h2 {
   font-size: 0.9em;
 }
 
+.cart-table th:first-child {
+  font-size: 1.17em;
+}
+
+.cart-table th:nth-child(2), /* Precio */
+.cart-table th:nth-child(3) { /* Cantidad */
+  font-size: 1.17em;
+}
+
+.cart-table th:nth-child(4) { /* Subtotal */
+  font-size: 1.17em; /* Increased by 30% from 0.9em */
+}
+
+.cart-table th:last-child {
+  font-size: 1.17em;
+}
+
 .cart-table td {
   background-color: #f9f9f9;
   color: #333;
@@ -99,6 +116,10 @@ h2 {
 
 .cart-table tr:active {
   background-color: #e8e8e8;
+}
+
+.cart-table td:first-child {
+  font-size: 1.125em;
 }
 
 .quantity-selector {
@@ -162,6 +183,10 @@ h2 {
   margin-top: 1.5em;
   text-align: right;
   font-size: 1em;
+}
+
+.cart-summary h3 {
+  font-size: 1.3em;
 }
 
 .btn {
