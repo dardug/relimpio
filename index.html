@@ -98,7 +98,7 @@ h2 {
 }
 
 .cart-table th:nth-child(4) { /* Subtotal */
-  font-size: 1.17em; /* Increased by 30% from 0.9em */
+  font-size: 1.17em;
 }
 
 .cart-table th:last-child {
@@ -122,6 +122,18 @@ h2 {
   font-size: 1.125em;
 }
 
+.cart-table td:nth-child(2) {
+  font-size: 1.125em;
+}
+
+.cart-table td:nth-child(3) { /* Cantidad column */
+  font-size: 1.125em;
+}
+
+.cart-table td:nth-child(4) { /* Subtotal column */
+  font-size: 1.125em;
+}
+
 .quantity-selector {
   display: flex;
   align-items: center;
@@ -132,9 +144,9 @@ h2 {
   background-color: #4CAF50;
   color: white;
   border: none;
-  width: 30px;
-  height: 30px;
-  font-size: 16px;
+  width: 37.5px;
+  height: 37.5px;
+  font-size: 20px;
   cursor: pointer;
   border-radius: 50%;
   transition: background-color 0.3s ease;
@@ -150,7 +162,7 @@ h2 {
 .quantity-selector input {
   width: 30px;
   text-align: center;
-  font-size: 14px;
+  font-size: 17.5px; /* Increased by 25% */
   margin: 0 5px;
   border: 2px solid #4CAF50;
   border-radius: 4px;
@@ -282,7 +294,6 @@ footer {
   font-size: 0.8em;
 }
 
-/* Mobile-specific styles */
 @media (max-width: 480px) {
   .cart-table {
     font-size: 0.8em;
@@ -298,14 +309,14 @@ footer {
   }
 
   .quantity-selector button {
-    width: 28px;
-    height: 28px;
-    font-size: 14px;
+    width: 35px;
+    height: 35px;
+    font-size: 17.5px;
   }
 
   .quantity-selector input {
     width: 25px;
-    font-size: 12px;
+    font-size: 15px; /* Increased by 25% from 12px */
   }
 
   .remove-btn {
@@ -334,7 +345,6 @@ footer {
   }
 }
 
-/* Add styles for better touch interaction */
 input[type="radio"] {
   width: 20px;
   height: 20px;
@@ -346,6 +356,13 @@ label {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+}
+
+.delivery-note {
+  font-size: 0.8em;
+  color: #666;
+  margin-top: 5px;
+  font-style: italic;
 }
 
 </style>
@@ -537,12 +554,13 @@ label {
     <label>
       <input type="radio" name="delivery" value="home" onchange="toggleDeliveryDetails()"> 🏠 Envío a domicilio (solo en Resistencia)
     </label>
+    <p class="delivery-note">📅 Los envíos se realizan los días Lunes y Martes en el horario de 8:30 a 12:30hs</p>
     <div id="delivery-details" class="delivery-details" style="display:none;">
       <input type="text" id="nombre" placeholder="Tu nombre completo">
       <input type="text" id="direccion" placeholder="Dirección de entrega">
       <div class="gps-option">
         <button id="gps-btn" class="gps-btn" onclick="getGPSLocation()">
-          <span class="emoji">📍</span> Enviar mi ubicación GPS(tenés que estar en tu domicilio)
+          <span class="emoji">📍</span> Enviar mi ubicación GPS
         </button>
         <span id="gps-status"></span>
       </div>
@@ -662,6 +680,7 @@ function enviarPedidoWhatsApp() {
     
     mensaje += `\n\n👤 Nombre: ${nombre}`;
     mensaje += `\n🏠 Dirección: ${direccion}`;
+    mensaje += `\n📅 Horario de entrega: Lunes y Martes de 8:30 a 12:30hs`;
     
     if (gpsLink) {
       mensaje += `\n📍 Mi ubicación GPS: ${gpsLink}`;
